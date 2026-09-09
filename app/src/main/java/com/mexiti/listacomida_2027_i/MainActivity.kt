@@ -12,6 +12,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.mexiti.listacomida_2027_i.data.DataSource
+import com.mexiti.listacomida_2027_i.ui.menu.MenuCardList
 import com.mexiti.listacomida_2027_i.ui.theme.ListaComida2027ITheme
 
 class MainActivity : ComponentActivity() {
@@ -21,31 +23,18 @@ class MainActivity : ComponentActivity() {
         setContent {
             ListaComida2027ITheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+
+                    MenuApp(Modifier.padding(innerPadding))
+
                 }
             }
         }
     }
 }
-
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-
-
-
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
+fun MenuApp(modifier: Modifier){
+    MenuCardList(
+        platilloList = DataSource().LoadPlatillos(),modifier
     )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ListaComida2027ITheme {
-        Greeting("Android")
-    }
 }
